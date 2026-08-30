@@ -12,8 +12,29 @@ cp -avf "/ctx/system_files"/. /
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
+# Declared this ways so that I can comment
+
+my_list=(
+    # Some apps I just want installed at the system level
+    cockpit		    # The base image includes a bunch of plugins already and its a good tool.
+    kde-partitionmanager    # Default on kinoite and it's good
+    keepassxc		    # To use as secrets service
+    tmux
+    zsh
+    # Virtualization tools
+    libvirt
+    qemu
+    podman-compose
+    # Niri
+    niri
+    noctalia
+    
+)
+
+
 # this installs a package from fedora repos
-dnf5 install -y tmux
+dnf5 install -y "${my_list[@]}"
+
 
 # Use a COPR Example:
 #
